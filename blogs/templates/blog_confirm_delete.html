@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+<div class="max-w-xl mx-auto bg-[#F6F0F0] p-6 shadow-lg rounded-lg mt-10">
+  <h2 class="text-2xl font-bold text-[#BDB395] mb-4 text-center">
+    ⚠️ Confirm Deletion
+  </h2>
+  <p class="text-[#D5C7A3] text-lg text-center mb-6">
+    Are you sure you want to delete
+    <strong class="text-[#F2E2B1]">"{{ blog.title }}"</strong>?
+  </p>
+
+  <form method="post" class="flex justify-center space-x-4">
+    {% csrf_token %}
+    <!-- Cancel Button -->
+    <a
+      href="{% url 'blog_detail' blog.slug %}"
+      class="bg-[#D5C7A3] text-white px-5 py-2 rounded-lg shadow-md hover:bg-[#BDB395] transition"
+    >
+      ❌ Cancel
+    </a>
+
+    <!-- Delete Button -->
+    <button
+      type="submit"
+      class="bg-[#BDB395] text-white px-5 py-2 rounded-lg shadow-md hover:bg-[#D5C7A3] transition"
+    >
+      🗑️ Delete
+    </button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block content %}
+<div class="max-w-3xl mx-auto p-6 bg-[var(--bg-light)] shadow-lg rounded-lg">
+  <h1 class="text-4xl font-bold text-[var(--text-dark)] mb-6 text-center">
+    📝 All Blogs
+  </h1>
+
+  <!-- New Blog Button -->
+  <div class="mb-6 flex justify-end">
+    <a
+      href="{% url 'blog_create' %}"
+      class="bg-[var(--primary)] text-[var(--text-dark)] font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-[var(--secondary)] transition"
+    >
+      ➕ New Blog
+    </a>
+  </div>
+
+  {% if blogs %}
+  <ul class="space-y-4">
+    {% for blog in blogs %}
+    <li
+      class="bg-[var(--secondary)] p-4 rounded-lg shadow-md hover:bg-[var(--primary)] transition"
+    >
+      <a
+        href="{% url 'blog_detail' blog.slug %}"
+        class="text-xl font-semibold text-[var(--text-dark)] hover:underline"
+      >
+        {{ blog.title }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="text-[var(--accent)] text-center font-medium">
+    No blogs available. Be the first to create one! 🎉
+  </p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Blog{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --bg-light: #f6f0f0;
+        --primary: #f2e2b1;
+        --secondary: #d5c7a3;
+        --accent: #bdb395;
+        --text-dark: #4a403a;
+        --danger: #dc2626; /* Darker color for better readability */
+      }
+    </style>
+  </head>
+  <body class="bg-[var(--bg-light)] text-[var(--text-dark)]">
+    <!-- Navbar -->
+    <nav class="bg-[var(--secondary)] p-4">
+      <div class="container mx-auto flex gap-4">
+        <a
+          href="/"
+          class="text-[var(--text-dark)] font-semibold hover:text-[var(--primary)]"
+          >Home</a
+        >
+        <a
+          href="/blog/"
+          class="text-[var(--text-dark)] font-semibold hover:text-[var(--primary)]"
+          >Blogs</a
+        >
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto p-6">{% block content %}{% endblock %}</div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+<div class="max-w-3xl mx-auto p-6 bg-[var(--bg-light)] shadow-lg rounded-lg">
+  <h1 class="text-4xl font-bold text-[var(--text-dark)] mb-4">
+    {{ blog.title }}
+  </h1>
+  <p class="text-[var(--text-light)] text-lg leading-relaxed">
+    {{ blog.content }}
+  </p>
+
+  <div class="mt-6 flex space-x-4">
+    <!-- Edit Button -->
+    <a
+      href="{% url 'blog_edit' blog.slug %}"
+      class="bg-[var(--secondary)] text-[var(--text-dark)] px-4 py-2 rounded-lg shadow-md hover:bg-[var(--primary)] transition"
+    >
+      ✏️ Edit
+    </a>
+
+    <!-- Delete Button -->
+    <a
+      href="{% url 'blog_delete' blog.slug %}"
+      class="bg-[var(--danger)] text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-700 transition"
+    >
+      🗑️ Delete
+    </a>
+  </div>
+</div>
+{% endblock %}

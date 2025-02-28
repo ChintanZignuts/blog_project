@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block content %}
+<div class="max-w-2xl mx-auto p-6 bg-[var(--bg-light)] shadow-lg rounded-lg">
+  <h2 class="text-3xl font-bold text-[var(--text-dark)] mb-6 text-center">
+    {% if form.instance.pk %} ✏️ Edit Blog Post {% else %} 📝 Create a Blog Post
+    {% endif %}
+  </h2>
+
+  <form method="post" class="space-y-6">
+    {% csrf_token %}
+
+    <!-- Title Field -->
+    <div>
+      <label class="block text-lg font-medium text-[var(--text-dark)] mb-1"
+        >Title:</label
+      >
+      {{ form.title }}
+    </div>
+
+    <!-- Content Field -->
+    <div>
+      <label class="block text-lg font-medium text-[var(--text-dark)] mb-1"
+        >Content:</label
+      >
+      {{ form.content }}
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="w-full bg-[var(--primary)] text-[var(--text-dark)] px-6 py-3 rounded-lg shadow-md text-lg font-semibold hover:bg-[var(--secondary)] transition"
+    >
+      {% if form.instance.pk %} 💾 Save Changes {% else %} 🚀 Create Post
+      {%endif %}
+    </button>
+  </form>
+</div>
+{% endblock %}
