@@ -19,17 +19,40 @@
   <body class="bg-[var(--bg-light)] text-[var(--text-dark)]">
     <!-- Navbar -->
     <nav class="bg-[var(--secondary)] p-4">
-      <div class="container mx-auto flex gap-4">
-        <a
-          href="/"
-          class="text-[var(--text-dark)] font-semibold hover:text-[var(--primary)]"
-          >Home</a
-        >
-        <a
-          href="/blog/"
-          class="text-[var(--text-dark)] font-semibold hover:text-[var(--primary)]"
-          >Blogs</a
-        >
+      <div class="container flex mx-auto justify-between">
+        <div class="flex gap-4">
+          <a
+            href="/"
+            class="text-[var(--text-dark)] font-semibold hover:text-[var(--primary)]"
+            >Home</a
+          >
+          <a
+            href="/blog/"
+            class="text-[var(--text-dark)] font-semibold hover:text-[var(--primary)]"
+            >Blogs</a
+          >
+        </div>
+
+        <div>
+          {% if user.is_authenticated %}
+          <a
+            href="{% url 'logout' %}"
+            class="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+            >Logout</a
+          >
+          {% else %}
+          <a
+            href="{% url 'login' %}"
+            class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600"
+            >Login</a
+          >
+          <a
+            href="{% url 'register' %}"
+            class="bg-green-500 px-4 py-2 rounded hover:bg-green-600"
+            >Register</a
+          >
+          {% endif %}
+        </div>
       </div>
     </nav>
 

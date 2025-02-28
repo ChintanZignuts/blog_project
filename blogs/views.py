@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import BlogPost
@@ -16,6 +16,7 @@ def blog_detail(request, slug):
     blog = get_object_or_404(BlogPost, slug=slug)
     return render(request, 'blog_detail.html', {'blog': blog})
 
+@login_required
 def blog_create(request):
     if request.method == "POST":
         form = BlogPostForm(request.POST)
@@ -26,6 +27,8 @@ def blog_create(request):
         form = BlogPostForm()
     return render(request, 'blog_form.html', {'form': form})
 
+
+@login_required
 def blog_edit(request, slug):
     blog = get_object_or_404(BlogPost, slug=slug)
     if request.method == "POST":
@@ -37,6 +40,8 @@ def blog_edit(request, slug):
         form = BlogPostForm(instance=blog)
     return render(request, 'blog_form.html', {'form': form})
 
+
+@login_required
 def blog_delete(request, slug):
     blog = get_object_or_404(BlogPost, slug=slug)
     if request.method == "POST":
